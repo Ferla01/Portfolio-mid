@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+        .nav-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .nav-links li {
+            margin-right: 10px;
+        }
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease; /* Add transition for smooth color change */
+        }
+        .nav-links li a:hover,
+        .nav-links li.active a { /* Style for hovered and active links */
+            text-decoration: underline;
+            color: skyblue;
+        }
+        #app {
+            padding: 0px;
+        }
+        .profile-section {
+            text-align: center;
+            margin-top: 0px;
+            background-image: url('background.jpg');
+            background-size: cover;
+            margin-bottom: 0px;
+            padding: 20px;
+        }
+        .profile-img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .project-img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        /* Media query for mobile view */
+        @media (max-width: 768px) {
+            .project-img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            .activities-title {
+                font-size: 30px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                text-align: center;
+                font-family: Serif;
+            }
+        }
+
+        /* Media query for desktop view */
+        @media (min-width: 769px) {
+            .project-img {
+                width: 33%;
+                height: auto;
+                margin-right: auto;
+                float: left;
+               
+            }
+
+            .activities-title {
+                font-size: 30px;
+                font-weight: bold;
+                margin-bottom: 0px;
+                text-align: center;
+                font-family: Serif;
+
+            }
+        }
+
+
+        #home {
+            background-color: rosybrown;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        #about {
+            background-color: rosybrown;
+            background-size: cover;
+            padding: 50px;
+        }
+
+        #about .profile-img {
+            border-radius: 0;
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        #about p {
+            margin-right: 0px; 
+            margin-left: 0px;
+            font-size: 28px; 
+            font-weight: bold;
+        }
+
+/* Expertise Section */
+    #expertise {
+        background-color: lightgrey;
+        background-size: cover;
+        padding: 50px;
+    }
+
+    .expertise-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap; 
+    }
+
+    .vertical-line {
+        border-left: 2px solid black;
+        height: 300px;
+        margin: 0 30px;
+    }
+
+    .expertise-info {
+        width: 200px; 
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .expertise-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .expertise-info {
+            width: 100%; 
+        }
+
+        .vertical-line {
+            display: none; 
+        }
+    }
+
+/* Contacts Section */
+#contacts {
+    background-color: rosybrown;
+    background-size: cover;
+    padding: 50px;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Add style for the horizontal line */
+.contact-icons::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.contact-icon {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.contact-icon img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.contact-icon p {
+    font-size: 16px;
+    margin: 0;
+    transition: color 0.2s ease; /* Add transition for smooth color change */
+}
+
+.contact-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon:hover img {
+    transform: scale(1.1); 
+}
+
+.contact-icon:hover p {
+    color: snow;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    background-color: lightgrey;
+    padding: 50px;
+    font-size: 16px;
+    font-family: Serif;
+    border-radius: 10px; /* Add border radius for a rounded look */
+}
+
+.contact-form h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px; /* Add border radius to input fields */
+    border: 1px solid #ccc;
+}
+
+.contact-form button {
+    background-color: #007bff; /* Change button background color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition for smooth color change */
+}
+
+.contact-form button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- Navigation Bar -->
+    <nav>
+        <ul class="nav-links">
+            <li v-bind:class="{ active: selectedTab === 'home' }"><a href="#home" @click="selectTab('home')">HOME</a></li>
+            <li v-bind:class="{ active: selectedTab === 'about' }"><a href="#about" @click="selectTab('about')">ABOUT</a></li>
+            <li v-bind:class="{ active: selectedTab === 'expertise' }"><a href="#expertise" @click="selectTab('expertise')">EXPERTISE</a></li>
+            <li v-bind:class="{ active: selectedTab === 'contacts' }"><a href="#contacts" @click="selectTab('contacts')">CONTACTS</a></li>
+        </ul>
+    </nav>
+
+    <!-- Profile Section -->
+    <div v-if="selectedTab === 'home' && !customContent" class="profile-section">
+        <img class="profile-img" src="profile.jpg" alt="Profile Picture">
+        <p style="font-family: 'Comic Sans MS' cursive; font-size: 35px; color:#333;"><strong>FERLYN AMASULA</strong></p>
+        <p>Web Developer | Imaginative | Artistic </p>
+        <hr>
+    </div>
+
+<!-- About Section -->
+<div v-if="selectedTab === 'about' && !customContent" id="about">
+    <img class="profile-img" src="about_profile.jpg" alt="About Profile Picture">
+    <h1 style="font-family: 'Comic Sans MS', cursive; font-size: 38px; color: #333;"><strong>FERLYN AMASULA</strong></h1>
+    <p style="font-family: 'Arial Narrow', sans-serif; font-size: 20px; color: #555;">AGE: 20 years old</p>
+    <p style="font-family: 'Georgia', serif; font-size: 20px; color: #555;">ADDRESS: Ibabao Cordova Cebu</p>
+    <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px; color: #555;">SCHOOL: Cordova Public College</p>
+    <p style="font-family: 'Georgia', serif; font-size: 20px; color: #555;">SKILLS/HOBBIES: Related Arts, Learning Languages, Creating Web</p>
+</div>
+
+
+<!-- Expertise Section -->
+<div v-if="selectedTab === 'expertise' && !customContent" id="expertise">
+    <div class="expertise-container">
+        <div class="expertise-info">
+            <img class="expertise-logo" src="html_logo.png" alt="HTML Logo">
+            <p>HTML</p>
+            <p>HTML is the language used to create and structure web pages, using tags like headings, paragraphs, links, and images. It forms the foundation of web development, working alongside CSS for styling and JavaScript for interactivity.</p>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="expertise-info">
+            <img class="expertise-logo" src="css_logo.png" alt="CSS Logo">
+            <p>CSS</p>
+            <p>CSS is a styling language that controls how HTML elements look on a webpage, including colors, fonts, layouts, and responsiveness. It separates content from presentation, making web design more manageable and consistent across pages.</p>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="expertise-info">
+            <img class="expertise-logo" src="js_logo.png" alt="JavaScript Logo">
+            <p>JavaScript</p>
+            <p>JavaScript is a programming language used to create interactive and dynamic elements on web pages. It enables functionalities like user interactions, data manipulation, and dynamic content updates without reloading the entire page.</p>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="expertise-info">
+            <img class="expertise-logo" src="vue_logo.png" alt="Vue.js Logo">
+            <p>Vue.js</p>
+            <p>Vue.js is a progressive JavaScript framework used for building user interfaces and single-page applications. It focuses on the view layer, providing tools for creating interactive web interfaces with reusable components. Vue.js is known for its simplicity, flexibility, and ease of integration with other libraries and projects.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contacts Section -->
+<div v-if="selectedTab === 'contacts' && !customContent" id="contacts">
+    <div class="contact-icons">
+        <!-- Facebook Icon -->
+        <div class="contact-icon" @click="showContact('Facebook')">
+            <img src="facebook_icon.png" alt="Facebook Icon">
+            <p class="contact-text">Fer Nyl</p>
+        </div>
+        <!-- Instagram Icon -->
+        <div class="contact-icon" @click="showContact('Instagram')">
+            <img src="instagram_icon.png" alt="Instagram Icon">
+            <p class="contact-text">Fer_Lyn</p>
+        </div>
+        <!-- Gmail Icon -->
+        <div class="contact-icon" @click="showContact('Gmail')">
+            <img src="gmail_icon.png" alt="Gmail Icon">
+            <p class="contact-text">af@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Horizontal Line -->
+    <hr class="horizontal-line">
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <h2><center>Contact Me</center></h2>
+        <form action="#" method="post">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="comments">Suggestions/Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+
+            <button type="submit" style="background-color: green; color: white;">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Project Section -->
+    <div v-if="!customContent">
+        <div v-if="selectedTab === 'home'" id="home">
+            <div>
+                <p class="activities-title">MY ACTIVITIES</p>
+            </div>
+            <!-- Mobile and Desktop View: Loop through all projects -->
+            <div v-for="project in projects" :key="project.id">
+
+                <p>{{ project.name }}</p>
+           
+                <img class="project-img" v-bind:src="project.imageUrl" :alt="'Project ' + project.id + ' Image'" v-if="isMobileView">
+                <p v-if="isMobileView">{{ project.description }}</p>
+
+  
+                <div v-else>
+                    <img class="project-img" v-bind:src="project.imageUrl" :alt="'Project ' + project.id + ' Image'">
+                    
+                    <div>
+                        <p>{{ project.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'My Portfolio',
+
+            projects: [
+                { id: 1, name: 'ACTIVITY #1 LINKABLE SITES', imageUrl: 'project1.jpg' },
+                { id: 2, name: 'ACTIVITY #2 CALENDAR', imageUrl: 'project2.jpg' },
+                { id: 3, name: 'ACTIVITY #3 LINKABLE TEXT', imageUrl: 'project3.jpg' }
+            ],
+            selectedTab: 'home',
+            customContent: '',
+            isMobileView: false
+        },
+        methods: {
+            selectTab(tab) {
+                this.selectedTab = tab;
+                this.customContent = '';
+            },
+            toggleView() {
+                this.isMobileView = !this.isMobileView;
+            }
+        },
+        mounted() {
+            this.selectTab('home');
+        }
+    });
+</script>
+</body>
+</html>
